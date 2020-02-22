@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %} {{ project.title }} {% endblock %}
+{% load static %}
+
+{% block page_content %}
+
+<div class="uk-article">
+    <div class="uk-grid" style="align-items:center;">
+        <div>
+            <img class="uk-border-rounded" src="{{ project.image.url }}" width="100" style="vertical-align:middle">
+        </div>
+        <div class="uk-width-expand">
+            <h1 class="uk-article-title" style="width:auto; margin:auto; vertical-align:middle">{{ project.title }}</h1>
+        </div>
+    </div>
+
+    <p class="uk-text-lead">{{ project.meta }}</p>
+    {{ project.get_html_description | safe }}
+
+    <hr class="uk-article-divider">
+    {% for tag in project.tag.all %}
+    <a href="{{tag.link}}"><span class="uk-badge">{{tag.title}}</span></a>
+    {% endfor %}
+
+    <hr class="uk-article-divider">
+
+    {% if project.link %}
+    <p>GitHub repo: <a href="{{ project.link }}" style="padding:10"><img
+            src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+            width="30" uk-svg></a></p>
+    {% endif %}
+</div>
+
+{% endblock %}

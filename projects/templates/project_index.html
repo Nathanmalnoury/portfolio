@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %} Projects Portfolio {% endblock %}
+
+{% block page_content %}
+
+
+<h1 class="uk-heading-medium page-title">Projects</h1>
+<hr class="uk-divider-small">
+
+<ul class="uk-grid uk-grid-medium uk-child-width-1-2@s uk-child-width-1-4@m " id="grid">
+
+    {% for project in projects %}
+    <div class="uk-card uk-card-default uk-card-hover uk-padding-remove-left uk-margin-medium-bottom uk-margin-medium-left">
+        <div class="uk-card-header">
+            <div class="uk-grid-small uk-flex-middle uk-grid uk-gap-small" style="height: 60px; align-items:center">
+
+                <div class="uk-width-auto">
+                    <img class="uk-border" width="40" height="40" src="{{ project.image.url }}">
+                </div>
+
+                <div class="uk-width-expand">
+
+                    <h3 class="uk-card-title uk-margin-remove-bottom">{{ project.title }}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="uk-card-body" style="height: 80px; padding-bottom:20px; padding-top:20px">
+            <p>{{ project.meta }}</p>
+        </div>
+
+        <div class="uk-card-footer" style="height: 25px">
+            <a href="{% url 'project_detail' project.pk %}" class="uk-button uk-button-text">Read more</a>
+        </div>
+    </div>
+
+    {% endfor %}
+</ul>
+{% endblock %}

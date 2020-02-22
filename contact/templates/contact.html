@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Contact{% endblock %}
+{% block page_content %}
+
+<h1 class="uk-heading-medium page-title">Contact</h1>
+<hr class="uk-divider-small">
+
+
+<div class="uk-grid" style="padding:20px">
+    <div class="uk-width-2-3@m uk-width-1-1@s" style="padding:20px">
+        <form action="/contact/mail/" method="post"> {% csrf_token %}
+
+            <fieldset class="uk-fieldset">
+
+                <legend class="uk-legend">Mail me:</legend>
+
+                <div class="uk-margin">
+                    <input id="id_name" class="uk-input" name="name" type="text" placeholder="Name"
+                           value="{{ current_name }}" required>
+                </div>
+                <div class="uk-margin">
+                    <input id="id_subject" class="uk-input" name="subject" type="text" placeholder="Subject"
+                           value="{{ current_subject }}" required>
+                </div>
+                <div class="uk-margin">
+                    <input id="id_email" class="uk-input" name="email" type="email" placeholder="Email"
+                           value="{{ current_email }}" required>
+                </div>
+                <div class="uk-margin">
+                    <textarea id="id_text" class="uk-textarea" rows="5" name="text" placeholder="Message"
+                              required></textarea>
+                </div>
+
+                <button class="uk-button uk-button-default">Submit</button>
+
+
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="uk-width-1-3@m uk-width-1-1@s"  style="padding:20px">
+        <legend class="uk-legend" style="padding:10px">LinkedIn Profile:</legend>
+
+        <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+        <div class="LI-profile-badge" data-version="v1" data-size="medium" data-locale="en_US" data-type="vertical"
+             data-theme="light" data-vanity="nathan-malnoury-83b81a134"><a class="LI-simple-link"
+                                                                           href='https://fr.linkedin.com/in/nathan-malnoury-83b81a134/en?trk=profile-badge'>Nathan
+            Malnoury</a></div>
+    </div>
+</div>
+
+
+{% endblock %}

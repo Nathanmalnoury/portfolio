@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %} About Me {% endblock %}
+
+{% block page_content %}
+<h1 class="uk-heading-medium page-title">About Me</h1>
+<hr class="uk-divider-small">
+
+
+{% for section in sections %}
+<div class="uk-margin-large-bottom uk-card uk-card-default uk-card-body">
+
+    <article class="uk-article">
+
+        <h1 class="uk-article-title"><a class="uk-link-reset" href="">{{section.title}}</a></h1>
+
+        <p class="uk-text-lead">{{section.meta}}</p>
+
+        <hr class="uk-divider-small">
+
+
+        <p>{{ section.get_html_description | safe }}</p>
+
+    </article>
+</div>
+
+{% endfor %}
+{% endblock %}

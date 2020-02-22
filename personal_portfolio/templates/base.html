@@ -1,0 +1,70 @@
+<!-- UIkit CSS -->
+{% load static %}
+<html>
+    <head lang="en">
+        <meta charset="utf-8">
+        <title>
+            NM - {% block title %} {% endblock %}
+        </title>
+        <link rel="stylesheet" href="{% static '/css/main.css' %}"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.1/dist/css/uikit.min.css"/>
+        <link rel="shortcut icon" href="{% static '/favs/favicon.ico'%}" type='image/x-icon'>
+    </head>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+
+    <nav class="uk-navbar-container uk-navbar">
+        <div class="uk-navbar-left">
+            <ul class="uk-navbar-nav">
+
+                <li {% if request.path == '/projects/' %} class="uk-active" {% endif %} >
+                <a href="{% url 'project_index' %}">N.M Portfolio</a>
+                </li>
+
+                <li {% if request.path == '/' %} class="uk-active" {% endif %}>
+                <a href="{% url 'aboutme' %}">About Me</a>
+                </li>
+
+                <li {% if request.path == '/contact/' %} class="uk-active" {% endif %}>
+                <a href="{% url 'contact' %}">Contact</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav">
+                <li>
+                    {% if debug_flag %}
+                    <a href="{% url 'admin:index' %}">Admin</a>
+                    {% endif %}
+                </li>
+                <li>
+                    <a href="https://github.com/Nathanmalnoury/"><img
+                            src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+                            width="30" uk-svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/nathan-malnoury-83b81a134"><img
+                            src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg"
+                            width="30" uk-svg></a>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+
+
+    <div class="container">
+        <hr class="uk-divider-small">
+        <div class="uk-margin-large-right uk-margin-medium-left uk-margin-medium-top">
+            {% block page_content %}{% endblock %}
+        </div>
+    </div>
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.1/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.1/dist/js/uikit-icons.min.js"></script>
+
+</html>
