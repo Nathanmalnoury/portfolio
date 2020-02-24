@@ -11,11 +11,12 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-from env import *
+
+from env import SECRET_KEY, DEBUG, ALLOWED_HOSTS, EMAIL_HOST, EMAIL_PORT, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, \
+    EMAIL_USE_TLS, EMAIL_USE_SSL
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -57,7 +58,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            'personal_portfolio/templates/'
+            os.path.join(BASE_DIR, 'personal_portfolio/templates/'),
+            os.path.join(BASE_DIR, 'templates/'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -118,6 +120,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+
 STATIC_URL = '/static/'
 
 # Add these new lines
@@ -127,15 +130,12 @@ STATICFILES_DIRS = (
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 EMAIL_HOST = EMAIL_HOST
 EMAIL_PORT = EMAIL_PORT
 EMAIL_HOST_USER = EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
-
 
 EMAIL_USE_TLS = EMAIL_USE_TLS
 EMAIL_USE_SSL = EMAIL_USE_SSL
