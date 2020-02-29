@@ -21,3 +21,6 @@ class Section(models.Model):
 
     def get_html_description(self):
         return mistune.markdown(self.description)
+
+    def get_absolute_url(self):
+        return "/section/%i/" % self.id
