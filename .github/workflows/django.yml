@@ -1,0 +1,32 @@
+name: Django CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: Install Dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Use env.py
+        run: |
+          mv env.example.py env.py
+          
+      - name: Run Tests
+        run: |
+          python3 manage.py test
+          
+      - name: Restore env.example.py
+        run: 
+          mv env.py env.example.py
