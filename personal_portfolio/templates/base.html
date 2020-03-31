@@ -58,18 +58,19 @@
 
     </nav>
 
-<div uk-sticky>
-    <div class="uk-alert-warning" uk-alert style="text-align: center;">
-        <a class="uk-alert-close" uk-close></a>
-         ⚠ This website is still at a <b>very early stage of development</b> ⚠ <br> Design improvements and more content are on their way !
-    </div>
-</div>
 
-    <div class="uk-container">
+
+    <div class="uk-container uk-container-xlarge">
+
         <hr class="uk-divider-small">
-        <div class="uk-margin-medium">
-            {% block page_content %}{% endblock %}
+        <div uk-sticky>
+            <div class="uk-alert-warning" uk-alert style="text-align: center;">
+                <a class="uk-alert-close" uk-close></a>
+                ⚠ This website is still at a <b>very early stage of development</b> ⚠ <br> Design improvements and more content are on their way !
+            </div>
         </div>
+            {% block page_content %}{% endblock %}
+
     </div>
 
     <!-- UIkit JS -->
