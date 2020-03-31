@@ -19,6 +19,14 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip
           pip install -r requirements.txt
+      - name: Use env.py
+        run: |
+          mv env.example.py env.py
+          
       - name: Run Tests
         run: |
           python3 manage.py test
+          
+      - name: Restore env.example.py
+        run: 
+          mv env.py env.example.py
